@@ -11,7 +11,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
 import joblib
 
-def train_and_evaluate(csv_path="ml_service/solar_dataset.csv"):
+def train_and_evaluate(csv_path="solar_dataset.csv"):
     if not os.path.exists(csv_path):
         sys.path.insert(0, os.path.dirname(__file__))
         from dataset_generator import generate_solar_dataset
@@ -76,7 +76,7 @@ def train_and_evaluate(csv_path="ml_service/solar_dataset.csv"):
 
     # Save winning model (Random Forest)
     winning_model = rf_pipeline
-    model_save_path = "ml_service/model_pipeline.joblib"
+    model_save_path = "model_pipeline.joblib"
     joblib.dump(winning_model, model_save_path)
     print(f"[SAVE] Winning model saved to '{model_save_path}'")
 
@@ -108,7 +108,7 @@ def train_and_evaluate(csv_path="ml_service/solar_dataset.csv"):
         "best_model": "Random Forest Regressor"
     }
 
-    metrics_save_path = "ml_service/metrics.json"
+    metrics_save_path = "metrics.json"
     with open(metrics_save_path, "w", encoding="utf-8") as f:
         json.dump(metrics_data, f, indent=2)
 
